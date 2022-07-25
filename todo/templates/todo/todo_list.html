@@ -19,6 +19,10 @@
                 {% else %}
                     <td>{{ item.name }}</td>
                 {% endif %}
+                {% empty %}
+                <tr>
+                    <td>You have nothing more to do here.<br>Enjoy your Walk!</td>
+                </tr>
                 <!-- <td>{{ item.name }}</td> -->
                 <!-- <td>{{ item.done }}</td> -->
             </tr>
