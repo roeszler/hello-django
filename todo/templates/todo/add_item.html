@@ -8,8 +8,19 @@
 </head>
 <body>
     <h1>Add ToDo item:</h1>
-    action to our add URL that we're going to submit the form to
+    <!-- 
+        Action to send info to pur '/add' URL 
+        A POST request, sends or posts information to the server
+        Add a special template tag to the form as a security measure.
+    -->
     <form action="add" method="POST">
+        <!-- 
+            This token is a randomly generated unique value which will be added to the form 
+            as a hidden input field when the forms submitted, and works to guarantee that 
+            the data we're posting is actually coming from our todo_list() app and not from 
+            another website.
+        -->
+        {% csrf_token %}
         <div>
             <p>
                 <label for="id_name">Name: </label>

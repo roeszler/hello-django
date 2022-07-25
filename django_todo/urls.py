@@ -25,5 +25,3 @@ urlpatterns = [
     path('', get_todo_list, name='get_todo_list'),
     path('add', add_item, name='add')
 ]
-
-

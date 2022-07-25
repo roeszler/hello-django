@@ -2,8 +2,9 @@
 Import Modules
 """
 from django.shortcuts import (
-    render
+    render,
     # HttpResponse
+    redirect
     )
 from .models import Item
 
@@ -30,5 +31,16 @@ def get_todo_list(request):
 def add_item(request):
     """
     Define add_item.html page
+    Set a variable for the name by looking up request.post.get()
+    Check the post boolean data actually has a done property in it as TRUE.
+    Create a ToDo item in todo_list.html
+    Then redirect back to home page
     """
+    if request.method == 'POST':
+        name = request.POST.get('item_name')
+        done = 'item_done' in request.POST
+        Item.objects.create(name=name, done=done)
+
+        return redirect('get_todo_list')
+    # If its a GET request:
     return render(request, "todo/add_item.html")
