@@ -8,6 +8,15 @@
 </head>
 <body>
     <h1>Things I need to do:</h1>
-    <p>This is a paragraph.</p>
+    <!-- {{ Returns the value of the items key from the context dictionary defined in views.py -->
+    <!-- {{ items }}  -->
+    {% for item in items %}
+        <table>
+            <tr>
+                <td>{{ item.name }}</td>
+                <td>{{ item.done }}</td>
+            </tr>
+        </table>
+    {% endfor %}
 </body>
 </html>
