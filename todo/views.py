@@ -25,3 +25,10 @@ def get_todo_list(request):
         'items': items
     }
     return render(request, "todo/todo_list.html", context)
+
+
+def add_item(request):
+    """
+    Define add_item.html page
+    """
+    return render(request, "todo/add_item.html")

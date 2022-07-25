@@ -10,8 +10,9 @@
     <h1>Things I need to do:</h1>
     <!-- {{ Returns the value of the items key from the context dictionary defined in views.py -->
     <!-- {{ items }}  -->
-    {% for item in items %}
-        <table>
+    
+    <table>
+        {% for item in items %}
             <tr>
                 <!-- an if statement that will strike out the items if it's been done in place T/F -->
                 {% if item.done %}
@@ -26,7 +27,9 @@
                 <!-- <td>{{ item.name }}</td> -->
                 <!-- <td>{{ item.done }}</td> -->
             </tr>
-        </table>
-    {% endfor %}
+        {% endfor %}
+    </table>
+    <a href="/add">Add ToDo item</a>
+    
 </body>
 </html>
