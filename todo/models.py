@@ -3,7 +3,7 @@ Import Modules
 """
 from django.db import models
 
-# Create your models here.
+# Create your models (TABLES) here.
 # When Django sees that we've created a new 'item' class it will
 # automatically create an items table when we make and run the
 # database migrations. By itself this class won't do anything
