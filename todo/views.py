@@ -52,3 +52,12 @@ def add_item(request):
     }
     # If its a GET request:
     return render(request, "todo/add_item.html", context)
+
+
+def edit_item(request, item_id):
+    """
+    Controls the view characteristics of edit_item.html
+    item_id parameter attached to the edit link
+    to return template edit_item.html
+    """
+    return render(request, 'todo/edit_item.html')
