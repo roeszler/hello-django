@@ -13,7 +13,7 @@ class TestItemForm(TestCase):
         form = ItemForm({'name': ''})  # simulate a user not filling in name
         self.assertFalse(form.is_valid())  # asserting that the form is not valid
         self.assertIn('name', form.errors.keys())  # assert if there is a name key in the dictionary of form.errors
-        self.assertEqual(form.errors.['name'][0], 'This field is required.')  # checks that the name field is first on the errors list '[0]' and indicates that "This filed is required"
+        self.assertEqual(form.errors['name'][0], 'This field is required.')  # checks that the name field is first on the errors list[0] and indicates that "This filed is required"
     
 
     def test_done_field_is_not_required(self):
