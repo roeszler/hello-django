@@ -76,7 +76,17 @@ class TestViews(TestCase):
         self.assertEqual(len(existing_items), 0)  # to check that the deleted item is no longer there
         
     
-
+    def test_can_edit_item(self):
+        """
+        Request a response from the server using post and post an updated name
+        Test that the response sends us back to home page
+        """
+        item = Item.objects.create(name='Test todo item edit')  # create the content that tests from the model at top of the page
+        response = self.client.post(f'/edit/{item.id}', {'name': 'Updated Name'})  # request a response from the server using post and post an updated name
+        self.assertRedirects(response, '/')
+        updated_item = Item.objects.get(id=item.id)  # get the updated item from the db as a final check
+        self.assertEqual(updated_item.name, 'Updated Name')  # test that the updated items equal name as updated name
+        
     
     # def test_this_thing_works_pass(self):
     #     self.assertEqual(1, 1)
