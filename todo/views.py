@@ -7,6 +7,7 @@ from django.shortcuts import (
     redirect
     )
 from .models import Item
+from .forms import ItemForm
 
 # Create your views here.
 # def say_hello(request):
@@ -37,10 +38,17 @@ def add_item(request):
     Then redirect back to home page
     """
     if request.method == 'POST':
-        name = request.POST.get('item_name')
-        done = 'item_done' in request.POST
-        Item.objects.create(name=name, done=done)
-
+        form = ItemForm(request.POST)  # letting ItemForm's handle the data
+        if form.is_valid():
+            form.save()
+        # name = request.POST.get('item_name')  # declaring it locally
+        # done = 'item_done' in request.POST
+        # Item.objects.create(name=name, done=done)
         return redirect('get_todo_list')
+
+    form = ItemForm()  # create an instance of ItemForm() in the add_item view.
+    context = {  # a context which contains the empty form.
+        'form': form
+    }
     # If its a GET request:
-    return render(request, "todo/add_item.html")
+    return render(request, "todo/add_item.html", context)
