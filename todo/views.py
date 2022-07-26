@@ -77,3 +77,15 @@ def edit_item(request, item_id):
         'form': form
     }
     return render(request, 'todo/edit_item.html', context)  # returning i to the form
+
+
+def toggle_item(request, item_id):
+    """
+    When a user clicks toggle, view will get the item
+    Flip the status to alternately true or false and vice versa
+    Redirect back to they get_todo list view
+    """
+    item = get_object_or_404(Item, id=item_id)  # get a copy of the item
+    item.done = not item.done  # changing dome status to opposite of current status
+    item.save()
+    return redirect('get_todo_list')

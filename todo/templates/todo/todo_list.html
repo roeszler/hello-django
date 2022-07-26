@@ -18,8 +18,13 @@
                 {% if item.done %}
                     <td><strike>{{ item.name }}</strike>&nbsp;</td>
                 {% else %}
-                    <td>{{ item.name }}</td>
+                    <td>{{ item.name }}&nbsp;</td>
                 {% endif %}
+                    <td>
+                        <a href="/toggle/{{ item.id }}">  <!-- note the . in item.id not item_id-->
+                            <button>Toggle</button>
+                        </a>
+                    </td>
                     <td>
                         <a href="/edit/{{ item.id }}">  <!-- note the . in item.id not item_id-->
                             <button>Edit</button>
