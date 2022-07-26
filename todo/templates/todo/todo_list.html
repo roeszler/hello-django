@@ -16,7 +16,7 @@
             <tr>
                 <!-- an if statement that will strike out the items if it's been done in place T/F -->
                 {% if item.done %}
-                    <td><strike>{{ item.name }}</strike></td>
+                    <td><strike>{{ item.name }}</strike>&nbsp;</td>
                 {% else %}
                     <td>{{ item.name }}</td>
                 {% endif %}

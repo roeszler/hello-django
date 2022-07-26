@@ -65,6 +65,13 @@ def edit_item(request, item_id):
     item = get_object_or_404(Item, id=item_id)  # get a copy of the item from the db
     # create an instance of ItemForm() in the edit_item view, Telling it that it should 
     # be prefilled with the information for the item we just got from the database:
+
+    if request.method == 'POST':
+        form = ItemForm(request.POST, instance=item)  # letting ItemForm's handle the data
+        if form.is_valid():
+            form.save()
+        return redirect('get_todo_list')
+    
     form = ItemForm(instance=item)
     context = {  # a context which contains the empty form.
         'form': form
