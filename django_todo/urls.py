@@ -27,5 +27,6 @@ urlpatterns = [
     path('add', views.add_item, name='add'),
     # is the mechanism by which the item ID makes its way from links or forms in our templates.
     path('edit/<item_id>', views.edit_item, name='edit'),
-    path('toggle/<item_id>', views.toggle_item, name='toggle')
+    path('toggle/<item_id>', views.toggle_item, name='toggle'),
+    path('delete/<item_id>', views.delete_item, name='delete')
 ]

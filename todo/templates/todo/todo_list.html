@@ -30,6 +30,11 @@
                             <button>Edit</button>
                         </a>
                     </td>
+                    <td>
+                        <a href="/delete/{{ item.id }}">  <!-- note the . in item.id not item_id-->
+                            <button>Delete</button>
+                        </a>
+                    </td>
                 {% empty %}
                 <tr>
                     <td>You have nothing more to do here.<br>Enjoy your Walk!</td>

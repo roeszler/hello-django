@@ -89,3 +89,13 @@ def toggle_item(request, item_id):
     item.done = not item.done  # changing dome status to opposite of current status
     item.save()
     return redirect('get_todo_list')
+
+
+def delete_item(request, item_id):
+    """
+    When a user clicks delete, this view will get the item,
+    delete it and redirect back to they get_todo list view
+    """
+    item = get_object_or_404(Item, id=item_id)  # get a copy of the item
+    item.delete()
+    return redirect('get_todo_list')
