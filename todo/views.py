@@ -4,7 +4,8 @@ Import Modules
 from django.shortcuts import (
     render,
     # HttpResponse
-    redirect
+    redirect, 
+    get_object_or_404
     )
 from .models import Item
 from .forms import ItemForm
@@ -59,5 +60,13 @@ def edit_item(request, item_id):
     Controls the view characteristics of edit_item.html
     item_id parameter attached to the edit link
     to return template edit_item.html
+    Return the item if it exists, or a 404 page not found if not.
     """
-    return render(request, 'todo/edit_item.html')
+    item = get_object_or_404(Item, id=item_id)  # get a copy of the item from the db
+    # create an instance of ItemForm() in the edit_item view, Telling it that it should 
+    # be prefilled with the information for the item we just got from the database:
+    form = ItemForm(instance=item)
+    context = {  # a context which contains the empty form.
+        'form': form
+    }
+    return render(request, 'todo/edit_item.html', context)  # returning i to the form
