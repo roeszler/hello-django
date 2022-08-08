@@ -1,1 +1,1 @@
-web: python3 run.py
+web: gunicorn django_todo.wsgi:appplication
