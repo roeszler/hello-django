@@ -6,7 +6,7 @@ class TestForms(TestCase):
 
     def test_item_name_is_required(self):
         """
-        Testing that the form is not valid. 
+        Testing that the form is not valid.
         The error occurred on the name field.
         The specific error message is what we expect.
         """
@@ -14,7 +14,7 @@ class TestForms(TestCase):
         self.assertFalse(form.is_valid())  # asserting that the form is not valid
         self.assertIn('name', form.errors.keys())  # assert if there is a name key in the dictionary of form.errors
         self.assertEqual(form.errors['name'][0], 'This field is required.')  # checks that the name field is first on the errors list[0] and indicates that "This filed is required"
-    
+
 
     def test_done_field_is_not_required(self):
         """
@@ -22,7 +22,7 @@ class TestForms(TestCase):
         """
         form = ItemForm({'name': 'Test ToDo Item'})
         self.assertTrue(form.is_valid())
-    
+
 
     def test_fields_are_explicit_in_form_metaclass(self):
         """
